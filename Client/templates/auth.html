@@ -1,0 +1,81 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header col-lg-4">
+			<a href="#" class="navbar-brand">Wunderlist</a>
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#dropped-menu">
+				<span class="sr-only">Открыть меню</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse" id="dropped-menu">
+			<form class="navbar-form navbar-right" ng-submit="submitForm();" novalidate>
+				<div class="input-container form-group">
+					<input ng-focus="logEmailValid=false" type="email" reqired autocomplete="on" placeholder="Email" class="form-control" name="username" ng-model="user.username" id="log-email">
+					<label for="log-email"><i class="fa fa-envelope-o"></i></label>
+					<div class="tooltip-valid" ng-show="logEmailValid">Email should match mask [a-z 0-9 _ .]@[a-z 0-9 .].[a-z]</div>
+				</div>
+				<div class="input-container form-group">
+					<input ng-focus="logPasswordValid=false" type="password" name="password" reqired placeholder="Password" class="form-control" ng-model="user.password" id="log-password">
+					<label for="log-password"><i class="fa fa-key"></i></label>
+					<div class="tooltip-valid" ng-show="logPasswordValid">Password should consists of [ 0-9 A-Z a-z _ ] and have atleast 3 characters</div>
+				</div>
+				<button type="submit" class="btn btn-success">Sign in</button>
+			</form>
+		</div>
+	</div>
+</nav>
+<div class="jumbotron container">
+	<h1>Keep your life in sync</h2>
+	<p>Wunderlist is the easiest way to get stuff done. Whether you’re planning a holiday, sharing a shopping list with a partner or managing multiple work projects, Wunderlist is here to help you tick off all your personal and professional to-dos.</p>
+	<button class="btn btn-primary" data-toggle="modal" data-target="#modal-reg" ng-click="registrationError=false;">Create new account</button>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4 col-md-6 col-sm-6">
+			<h2>Share lists and collaborate with family and friends</h2>
+			<p>Whether you’re sharing a grocery list with a loved one, working on a project, or planning a vacation, MagicList makes it easy to collaborate with everyone in your life.</p>
+		</div>
+		<div class="col-lg-4 col-md-6 col-sm-6">
+			<h2>Real-time Sync</h2>
+			<p>Whether you’re updating your grocery list on the go or collaborating with co-workers in the office, MagicList's Real-time Sync instantly keeps all your lists up-to-date no matter where you are.</p>
+		</div>
+		<div class="col-lg-4 col-md-6 col-sm-6">
+			<h2>Plan for anything</h2>
+			<p>Organize and share your to-do, work, grocery, movies and household lists. No matter what you’re planning, how big or small the task may be, MagicList makes it super easy to get stuff done.</p>
+		</div>
+</div>
+<div class="modal fade" id="modal-reg">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Registration</h2>
+			</div>
+			<div class="modal-body">
+				<div ng-if="registrationError" class="error">
+					There is user user with the same name
+				</div>
+				<div class="input-container">
+					<input ng-focus="nameValid=false; registrationError=false;" type="text" id="auth-name" class="form-control" placeholder="Name" ng-model="newUser.name" data-toggle="tooltip" data-placement="bottom" title="This is name">
+					<label for="auth-email"><i class="fa fa-envelope-o"></i></label>
+					<div class="tooltip-valid" ng-show="nameValid">Put your name</div>
+				</div>
+				<div class="input-container">
+					<input ng-focus="emailValid=false; registrationError=false;" type="email" id="auth-email" class="form-control" placeholder="Email" ng-model="newUser.email" data-toggle="tooltip" data-placement="bottom" title="This is email">
+					<label for="auth-email"><i class="fa fa-envelope-o"></i></label>
+					<div class="tooltip-valid" ng-show="emailValid">Email should match mask [a-z 0-9 _ .]@[a-z 0-9 .].[a-z]</div>
+				</div>
+				<div class="input-container">
+					<input ng-focus="passwordValid=false; registrationError=false;" type="password" id="auth-password" class="form-control" placeholder="Password" ng-model="newUser.password" data-toggle="tooltip" data-placement="bottom" title="This is password">
+					<label for="auth-password"><i class="fa fa-key"></i></label>
+					<div class="tooltip-valid" ng-show="passwordValid">Password should consists of [ 0-9 A-Z a-z _ ] and have atleast 3 characters</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" data-dismiss="modal" ng-click="newUser.name = ''; newUser.email = ''; newUser.password='';" id="cancel">Cancel</button>
+				<button class="btn btn-primary" ng-click="registration()">Create</button>
+			</div>
+		</div>
+	</div>
+</div>

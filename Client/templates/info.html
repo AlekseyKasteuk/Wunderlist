@@ -1,0 +1,48 @@
+<div>
+	<div class="panel panel-default">
+		<span class="manipulate">
+			<i class="fa fa-trash-o" ng-click="deleteTask();"></i>
+			<a ng-href="#/lists/{{list.id}}"><i class="fa fa-toggle-right" ="#/lists/{{list.id}}"></i></a>
+		</span>
+		<div class="panel-heading">
+			<input type="checkbox" ng-model="task.done" id="{{task.id}}task" ng-change="changeTask(true, 'done', {id: task.id, done: task.done})">
+			<label for="{{task.id}}task"><i class="fa fa-square-o" ng-if="!task.done"></i><i class="fa fa-check-square-o" ng-if="task.done"></i></label>
+			<div ng-if="!changes.name" ng-click="changes.name=true">{{task.name}}</div>
+			<textarea elastic ng-model="task.name" ng-if="changes.name" ng-blur="changeTask(true, 'name', {id: task.id, name: task.name})" ng-keydown="changeTask($event.keyCode==13, 'name', {id: task.id, name: task.name})"></textarea>
+		</div>
+		<div class="panel-body">
+			<div id="creator"><i class="fa fa-user"></i> <span><strong>{{task.creator}}</strong></span></div>
+			<div class="input-container">
+				<input type="date" class="form-control" ng-model="task.date" ng-change="changeTask(true, 'date', {id: task.id, date: task.date})">
+				<i class="fa fa-calendar"></i>
+			</div>
+			<div class="subtasks-container">
+				<div class="input-container">
+					<input type="text" ng-model="newSubtask" class="form-control" placeholder="New subtask" ng-keydown="$event.keyCode == 13 ? addSubtask() : 0">
+					<i class="fa fa-plus"></i>
+				</div>
+				<div ng-repeat="subtask in task.subtasks" id="task-subtasks" class="input-container">
+					<textarea elastic ng-model="subtask.name" ng-blur="changeSubtask(subtask, true)" ng-keydown="changeSubtask(subtask, $event.keyCode == 13)" class="done-{{subtask.done}}"></textarea>
+					<input type="checkbox" ng-model="subtask.done" id="{{subtask._id}}" ng-change="changeSubtask(subtask, true)">
+					<label for="{{subtask._id}}" class="subtask-checkbox">
+						<i class="fa fa-square-o" ng-if="!subtask.done"></i>
+						<i class="fa fa-check-square-o" ng-if="subtask.done"></i>
+					</label>
+					<label class="remove-subtask" ng-click="deleteSubtask(subtask._id)">
+						<i class="fa fa-remove"></i>
+					</label>
+				</div>
+			</div>
+			<textarea cols="30" rows="4" ng-model="task.description" class="form-control textaria" ng-blur="changeTask(true, 'description', {id: task.id, description: task.description})"></textarea>
+			<div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="dragover" ngf-multiple="false" accept="image/*"><span>Drop images here or click to upload</span></div>
+				<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+			</div>
+			<ul ng-if="myfiles.length">
+				<li ng-repeat="file in myfiles" class="img-container">
+					<i class="glyphicon glyphicon-remove" ng-click="deleteFile(file);"></i>
+					<img ng-src="{{file.src}}" data-toggle="modal" data-target="#picture" ng-click="selectIMG(file.src);">
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

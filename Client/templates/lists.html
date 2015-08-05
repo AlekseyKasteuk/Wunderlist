@@ -1,0 +1,170 @@
+<div class="whole-height-container">
+	<aside class="tasks" ng-controller="ListsCtrl" ng-click="hideTask();">
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="btn-group">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><span id="username">{{user.name}} <span class="caret"></span></span></a>
+				<ul class="dropdown-menu">
+					<li><a data-toggle="modal" data-target="#edit-user">Edit accaunt</a></li>
+					<li class="divider"></li>
+					<li><a ng-click="logout();" ng-href="#/auth">Exit</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div id="tasks" class="panel-group">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<label for="invites-check"><i class="fa fa-user-plus"></i> Invites({{lists.invites.length}}) <span class="caret"></span></label>
+				</div>
+				<div id="invites" class="panel-collapse">
+					<input type="checkbox" id="invites-check">
+					<div class="panel-body">
+						<div ng-show="!lists.invites.length">
+							No invites
+						</div>
+						<ul>
+							<li ng-repeat="list in lists.invites | orderBy: 'name'" class="task-btn">
+								<div class="btn-group">
+									<button class="btn btn-success" ng-click="acceptInvite(list)"><i class="glyphicon glyphicon-ok"></i></button>
+									<button class="btn btn-danger" ng-click="deleteList(list)"><i class="glyphicon glyphicon-remove"></i></button>
+								</div>
+								<div class="invites">{{list.name}}</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<label for="own-check"><i class="fa fa-user"></i> Own lists({{lists.own.length}}) <span class="caret"></span></label>
+				</div>
+				<div id="own" class="panel-collapse">
+					<input type="checkbox" id="own-check">
+					<div class="panel-body">
+						<div ng-show="!lists.own.length">
+							No own lists
+						</div>
+						<ul>
+							<li ng-repeat="list in lists.own | orderBy: 'name'" class="task-btn">
+								<a ng-href="#/lists/{{list.id}}">
+									<div>
+										{{list.name}}
+									</div>
+								</a>
+								<i class="fa fa-pencil" data-toggle="modal" data-target="#edit-list" ng-click="selectList(list);"></i>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<label for="shared-check"><i class="fa fa-users"></i> Shared lists({{lists.shared.length}}) <span class="caret"></span></label>
+				</div>
+				<div id="shared" class="panel-collapse">
+					<input type="checkbox" id="shared-check">
+					<div class="panel-body">
+						<div ng-if="!lists.shared.length">
+							No shared lists
+						</div>
+						<ul>
+							<li ng-repeat="list in lists.shared | orderBy: 'name'" class="task-btn">
+								<a ng-href="#/lists/{{list.id}}">
+									<div>{{list.name}} <span class="owner">({{list.owner.email}})</span></div>
+								</a>
+								<i class="fa fa-pencil" data-toggle="modal" data-target="#edit-list" ng-click="selectList(list);"></i>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="btn btn-default" data-toggle="modal" data-target="#modal-new-list" id="add-task";>
+			<i class="glyphicon glyphicon-plus"></i>
+		</div>
+	</aside>
+	<div class="subtasks" ui-view>
+		
+	</div>
+</div>
+
+<div class="modal fade" id="modal-new-list">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body">
+				<h3>New task list</h3>
+				<input type="text" class="form-control" ng-model="newList" placeholder="List name">
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default" data-dismiss="modal" ng-click="newList=''">Cancel</button>
+				<button class="btn btn-primary" data-dismiss="modal" ng-click="add('List');">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="picture">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<i class="glyphicon glyphicon-remove-circle remove-icon" data-dismiss="modal"></i>
+				<img ng-src="{{selectedIMG}}" alt="" width="100%">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="edit-list">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-heading">
+				<h3>Edit list</h3>
+			</div>
+			<div class="modal-body">
+				<div class="input-container">
+					<input type="text" placeholder="List name" ng-model="selectedList.name" class="form-control" ng-keydown="$event.keyCode == 13 ? updateList() : 0">
+					<i class="fa fa-tasks"></i>
+				</div>
+				<h4>Members</h4>
+				<div class="input-container">
+					<input type="email" placeholder="Add new person" ng-model="newUser" class="form-control" ng-keydown="$event.keyCode == 13 ? add('User') : 0">
+					<i class="fa fa-user-plus"></i>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<i class="fa fa-trash-o" data-dismiss="modal" ng-click="deleteList();"></i>
+				<button class="btn btn-primary" data-dismiss="modal">Done</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="edit-user">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-heading">
+				<h3>Edit profile</h3>
+			</div>
+			<div class="modal-body">
+				<div class="input-container">
+					<input ng-focus="nameValid=false;" type="text" id="auth-name" class="form-control" placeholder="Name" ng-model="newUser.name" data-toggle="tooltip" data-placement="bottom" title="This is name">
+					<label for="auth-email"><i class="fa fa-envelope-o"></i></label>
+					<div class="tooltip-valid" ng-show="nameValid">Put your name</div>
+				</div>
+				<div class="input-container">
+					<input ng-focus="passwordValid=false;" type="password" id="auth-password" class="form-control" placeholder="Password" ng-model="newUser.password" data-toggle="tooltip" data-placement="bottom" title="This is password">
+					<label for="auth-password"><i class="fa fa-key"></i></label>
+					<div class="tooltip-valid" ng-show="passwordValid">Password should consists of [ 0-9 A-Z a-z _ ] and have atleast 3 characters</div>
+				</div>
+				<div class="input-container">
+					<input ng-focus="passwordValid=false;" type="password" id="auth-password" class="form-control" placeholder="Repeat password" ng-model="newUser.repeatPassword" data-toggle="tooltip" data-placement="bottom" title="This is password">
+					<label for="auth-password"><i class="fa fa-key"></i></label>
+					<div class="tooltip-valid" ng-show="repeatPasswordValid">Password should consists of [ 0-9 A-Z a-z _ ] and have atleast 3 characters</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-default cancel" data-dismiss="modal" ng-click="newUser.password=''; newUser.repeatPassword='';" id="cancel">Cancel</button>
+				<button class="btn btn-primary" ng-click="editUserProfile(newUser)">Change</button>
+			</div>
+		</div>
+	</div>
+</div>

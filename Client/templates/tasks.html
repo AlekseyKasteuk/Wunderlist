@@ -1,0 +1,14 @@
+<aside class="info" ui-view></aside>
+<div class="middle">
+	<input type="text" class="form-control input-new-task" placeholder='Add an item to "{{list.name}}"' ng-model="newTask" ng-keydown="add($event);">
+	<div>
+		<ul>
+			<li class="task-btn" ng-repeat="task in tasks | filter:{done:false}" ><input type="checkbox" ng-model="task.done" id="{{task.id}}"><label for="{{task.id}}" ng-click="updateTask({done: true}, task.id);"><i class="fa fa-square-o"></i></label> <a ng-href="#/lists/{{list.id}}/{{task.id}}"><div>{{task.name}}</div></a></li>
+		</ul>
+		<input type="checkbox" id="show-done">
+		<label for="show-done" id="show-done-label"></label>
+		<ul>
+			<li class="task-btn" ng-repeat="task in tasks | filter:{done:true}" ><input type="checkbox" ng-model="task.done" id="{{task.id}}"><label for="{{task.id}}" ng-click="updateTask({done: false}, task.id);"><i class="fa fa-check-square-o"></i></label> <a ng-href="#/lists/{{list.id}}/{{task.id}}"><div>{{task.name}}</div></a></li>
+		</ul>
+	</div>
+</div>

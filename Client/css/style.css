@@ -1,0 +1,774 @@
+.main {
+	margin-top: 50px;
+}
+
+.jumbotron>button {
+	font-size: 25px;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.error {
+	background-color: rgba(214,40,34,0.07);
+	border: 1px solid rgba(214,40,34,0.36);
+	color: #d62822;
+	font-size: 14px;
+	text-align: left;
+	padding: 10px;
+	margin-bottom: 20px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.modal-footer>.btn {
+	width: 100px;
+}
+
+html {
+	height: 100%;
+	min-width: 650px !important;
+}
+
+body {
+	height: 100%;
+	overflow: auto;
+	min-width: 650px !important;
+	position: relative;
+}
+
+*::-webkit-scrollbar {
+	width: 5px;
+}
+*::-webkit-scrollbar-thumb {
+	background-color: rgba(0,0,0,.5);
+  	border-radius: 10px;
+}
+*::-webkit-scrollbar:horizontal {
+	height: 8px;
+}
+
+* {
+	font-family: "Lato","Geneva CY";
+}
+
+.whole-height-container {
+	position: absolute;
+	bottom: 0;
+	top: 0;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+.whole-height-container>* {
+	height: 100%;
+	overflow: auto;
+}
+
+aside.tasks {
+	float: left;
+	border-bottom: 34px solid transparent;
+	position: relative;
+	min-width: 230px;
+	width: 20%;
+	background-color: #f6f6f6;
+}
+
+aside {
+	background-color: #fcfcfc;
+	overflow-x: hidden !important;
+}
+
+.info {
+	float: right;
+	position: relative;
+	height: 100%;
+	background-color: transparent;
+}
+
+.task-btn {
+	width: 100%;
+	border-radius: 0;
+	margin: 2px auto;
+	list-style: none;
+}
+
+.btn-group {
+	margin-top: 10px;
+}
+
+#username {
+	display: inline-block;
+	max-width: 115px;
+	white-space: nowrap;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	font-weight: bold;
+}
+
+#add-task {
+	min-width: 230px;
+	width: 20%;
+	border-radius: 0;
+	position: fixed;
+	bottom: 0px;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+.subtasks {
+	background-image: url(../img/sea.jpg);
+	background-size: cover;
+	position: relative;
+}
+
+.invites, #own li div, #shared li div {
+	height: 100%;
+	width: 100%;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	box-sizing: border-box;
+	padding-right: 50px !important;
+}
+
+#invites i {
+	font-size: 10px;
+	top: -1px;
+	left: 1px;
+}
+
+#invites .btn-group {
+	right: 5px !important;
+	top: 7px !important;
+	position: absolute !important;
+}
+
+.panel-body {
+	padding: 5px 0;
+}
+
+#invites .btn {
+	width: 20px;
+	height: 20px;
+	padding: 0;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#tasks li, .subtasks li {
+	margin-bottom: 3px;
+	padding: 5px 15px;
+	background-color: #eeeeee;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #262626;
+	font-weight: 500 !important;
+	transition: all .5s;
+}
+
+.subtasks li {
+	text-align: left;
+	padding: 5px 10px;
+}
+
+.dropdown-menu a:hover {
+	cursor: pointer;
+	background-color: #0088cc !important;
+	color: #ffffff !important;
+}
+
+#tasks li:hover, .subtasks li:hover {
+	background-color: #e1f2fe;
+}
+
+#tasks li:active, .subtasks li:active {
+	background-color: #4799CB;
+}
+
+.panel-body {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.task-nav {
+	background-color: #eee;
+}
+
+.correct {
+	font-size: 14px;
+	vertical-align: super;
+	transition: all .5;
+	cursor: pointer;
+	-webkit-user-select: none;
+}
+
+#add-sub {
+	vertical-align: middle;
+	position: absolute;
+	left: 0;
+	width: 100%;
+}
+
+.subtasks div {
+	/*position: absolute;
+	left: 15px;
+	right: 15px;
+	top: 30px;
+	bottom: 20px;*/
+	overflow: auto;
+}
+
+#add-sub {
+	vertical-align: middle;
+}
+
+.correct:hover {
+	color: #ff0000;
+}
+
+.task-nav .row {
+	min-height: 50px;
+}
+
+.task-nav .btn, .task-nav input {
+	margin: 5px 0; 
+}
+
+.task-nav .btn {
+	width: 134px;
+}
+
+.info div {
+	word-break: break-word;
+}
+
+.manipulate {
+	position: fixed;
+	bottom: 10px;
+	width: 240px;
+	height: 40px;
+	font-size: 20px;
+	background-color: white;
+	border-radius: 4px;
+	z-index: 900;
+}
+
+.manipulate i.fa-toggle-right {
+	left: 20px;
+	bottom: 12px;
+}
+
+.manipulate i.fa-trash-o {
+	right: 20px;
+	bottom: 12px;
+}
+
+.manipulate i {
+	transition: all 1s;
+	cursor: pointer;
+	position: absolute;
+}
+
+.task-nav h2 {
+	word-break: break-word;
+}
+
+.glyphicon-trash:hover {
+	color: #d9534f;
+}
+
+.glyphicon-plus-sign:hover {
+	color: #5cb85c;
+}
+
+.info .panel {
+	margin: 0;
+	position: absolute;
+	top: 10px;
+	bottom: 10px;
+	padding-bottom: 50px !important;
+	background-color: #f6f6f6;
+	animation: fromright .5s;
+}
+
+@-webkit-keyframes fromright {
+	from: {
+		transform: translateX(100px);
+	}
+	to: {
+		transform: translateX(0);
+	}
+}
+
+.owner {
+	font-style: italic;
+	font-family: serif;
+}
+
+#description {
+	min-height: 20px;
+	background-color: white;
+	border-radius: 3px;
+	cursor: text;
+	padding: 5px 10px;
+	font-style: italic;
+}
+
+.textaria {
+	height: 80px;
+}
+
+.drop-box {
+    background: #F8F8F8;
+    border: 2px dashed #aaa;
+    width: 100%;
+    height: 65px;
+    text-align: center;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bolder;
+    padding: 10px 5px 0 5px;
+}
+.dragover {
+    border: 5px dashed blue;
+}
+
+#subtask-name {
+	margin-top: 20px;
+}
+
+.remove-icon {
+	position: absolute;
+	right: -11px;
+	top: -11px;
+	font-size: 22px;
+	cursor: pointer;
+	background-color: white;
+	border-radius: 11px;
+}
+
+.img-container {
+	position: relative;
+	padding: 5px !important;
+	background-color: white !important;
+}
+
+.img-container img {
+	cursor: pointer;
+	border-radius: 3px;
+	width: 100%;
+}
+
+.img-container li {
+	padding: 5px;
+	background-color: white;
+}
+
+.img-container i {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	color: rgba(0,0,0,0.5);
+	cursor: pointer;
+}
+
+.img-container i:hover {
+	color: rgb(0,0,0);
+}
+
+.info ul {
+	background-color: white;
+	padding: 5px 2px;
+	border-radius: 3px;
+}
+
+.input-container {
+	position: relative;
+}
+
+.input-container input{
+	padding: 6px 6px 6px 35px;
+	z-index: 0;
+}
+
+.input-container i {
+	position: absolute;
+	color: #3384CA;
+	top: 4px;
+	left: 3px;
+	font-size: 20px;
+	padding: 2px;
+}
+
+.tooltip-valid {
+	background-color: #F9C9C8;
+	border: 1px solid rgba(214,40,34,0.36);
+	color: #d62822;
+	font-size: 14px;
+	padding: 3px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	position: absolute;
+	left: 50px;
+	top: 40px;
+	width: 300px;
+	text-align: center;
+	z-index: 900;
+}
+
+.tooltip-valid::before {
+	content: "";
+	left: 15px;
+	top: -20px;
+	position: absolute;
+	border: 10px solid transparent;
+	border-bottom: 10px solid #F96868;
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+#tasks :checked+.panel-body li {
+	height: 34px;
+	line-height: 34px;
+}
+
+#tasks :checked+.panel-body>div {
+	height: 34px;
+	line-height: 22px;
+	padding: 5px;
+	margin: 5px 10px;
+	background-color: rgba(214,40,34,0.07);
+	border: 1px solid rgba(214,40,34,0.36);
+	color: #d62822;
+	font-size: 14px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#tasks .panel-body>div {
+	height: 0;
+	transition: all .2s ease-out;
+	text-align: center;
+	overflow: hidden;
+}
+
+#tasks :checked+.panel-body {
+	padding: 5px 0;
+}
+
+#tasks .panel-body, #tasks li,  #tasks .panel-body div{
+	padding: 0;
+	margin: 0;
+}
+
+#tasks li {
+	height: 0;
+	transition: height .2s ease-out;
+	padding: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	text-align: left;
+	background-color: transparent;
+	padding-left: 10px;
+	overflow: hidden;
+	position: relative;
+}
+
+.middle li div {
+	padding: 0 20px; !important;
+	width: 80%;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+.middle li {
+	position: relative;
+}
+
+.middle li label {
+	position: absolute;
+	top: 7px;
+}
+
+#own i, #shared i {
+	position: absolute;
+	right: 5px;
+	top: 3px;
+	font-size: 18px;
+	color: #3384CA;
+	transition: all .3s;
+}
+
+#own i:hover, #shared i:hover {
+	color: #0033A0;
+}
+
+#tasks label {
+	cursor: pointer;
+	font-weight: 200;
+	transition: all .5s;
+}
+
+#tasks label:hover {
+	color: rgb(51, 122, 183);
+}
+
+/*#tasks :checked+.panel-body li:last-child, #tasks :checked+.panel-body li:nth-child(odd) {
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+#tasks :checked+.panel-body li:first-child {
+	border-top: 1px solid rgba(0,0,0,0.2);
+}*/
+
+.input-new-task {
+	background-color: rgba(0,0,0,0.7);
+	color: white;
+	padding-right: 30px;
+	font-weight: bold;
+	font-family: "Lato","Geneva CY","Lucida Grande";
+	border: none;
+}
+
+.input-new-task::-webkit-input-placeholder {
+	color: #aaa;
+}
+
+li {
+	-webkit-user-select: none;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.middle {
+	padding: 15px 15px;
+	height: 100%;
+	position: relative;
+}
+
+.middle>div {
+	position: absolute;
+	top: 60px;
+	left: 15px;
+	right: 15px;
+	bottom: 10px;
+	overflow: auto;
+}
+
+textarea {
+    width: 100%;
+    overflow-y: hidden;
+    resize: none;
+    /*line-height: 25px;*/
+    border: 0;
+    outline: none;
+	-moz-appearance: none;
+	display: block;
+	transition: all .3s;
+}
+
+textarea:focus {
+	color: rgb(51, 122, 183) !important;
+}
+
+.info .panel {
+	padding: 0;
+	width: 100%;
+}
+
+.info .panel-heading div, .info .panel-heading textarea {
+	font-size: 18px;
+	font-family: "Lato","Geneva CY","Lucida Grande";
+	font-weight: bold;
+	color: #262626;
+	padding: 0;
+	background-color: #f5f5f5;
+	padding: 5px;
+	padding-left: 20px;
+}
+
+.info .panel-heading label {
+	position: absolute;
+	top: 18px;
+	left: 15px;
+}
+
+.info>div {
+	width: 240px;
+	background-color: transparent;
+	height: 100%;
+}
+
+.info .panel-body textarea {
+	background: #fbf9e3;
+	background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.08) 1px, transparent 1px);
+	background-image: -moz-linear-gradient(top, rgba(0,0,0,0.08) 1px, transparent 1px);
+	background-image: -o-linear-gradient(top, rgba(0,0,0,0.08) 1px, transparent 2px);
+	background-image: -ms-linear-gradient(top, rgba(0,0,0,0.08) 1px, transparent 1px);
+	background-image: linear-gradient(to bottom, rgba(0,0,0,0.08) 1px, transparent 1px);
+	-webkit-background-size: 100% 26px;
+	-moz-background-size: 100% 26px;
+	background-size: 100% 26px;
+	border: 1px solid #dbd9cc;
+	font-size: 16px;
+	line-height: 25px;
+	padding: 8px 15px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.06),inset 0 1px 0 #fbf9e3;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.06),inset 0 1px 0 #fbf9e3;
+	margin-bottom: 10px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.info .panel-body textarea:focus {
+	color: black !important;
+}
+
+#show-done-label {
+	display: block;
+	white-space: nowrap;
+	background-color: rgba(0,0,0,.6);
+	margin: 10px auto;
+	position: relative;
+	width: 300px;
+	text-align: center;
+	padding: 10px;
+	color: rgba(255,255,255, .8);;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: all .3s;
+}
+
+#show-done-label:hover {
+	background-color: rgba(0,0,0,.7);
+	padding: 10px;
+	color: rgba(255,255,255, .9);;
+	cursor: pointer;
+}
+
+#show-done+#show-done-label::before {
+	content: "Show complited tasks";
+}
+
+#show-done:checked+#show-done-label::before {
+	content: "Hide complited tasks";
+}
+
+#show-done+label+ul li {
+	height: 0;
+	padding: 0;
+	opacity: .85;
+}
+
+#show-done:checked+label+ul li {
+	height: 31px;
+	padding: 5px 10px;
+
+}
+
+#show-done+label+ul li * {
+	visibility: hidden !important;
+}
+
+#show-done+label+ul li div {
+	text-decoration: line-through;
+}
+
+#show-done:checked+label+ul li * {
+	visibility: visible !important;
+
+}
+
+label {
+	cursor: pointer;
+}
+
+.info .panel-body>* {
+	margin: 10px 0;
+}
+
+.info .panel-body {
+	padding: 0 10px;
+}
+
+.modal-heading {
+	text-align: center;
+
+}
+
+#edit-list .modal-footer i {
+	position: absolute;
+	left: 50px;
+	font-weight: 100;
+	font-size: 26px;
+	color: rgba(0,0,0,.6);
+	cursor: pointer;
+	transition: all .3s;
+}
+
+#edit-list .modal-footer i:hover {
+	color: rgba(0,0,0,.8);
+}
+
+#task-subtasks, #task-subtasks li {
+	margin-bottom: -20px;
+	padding: 0 !important;
+	font-family: "Lato","Geneva CY";
+}
+
+#task-subtasks textarea {
+	padding: 6px 25px 6px 35px;
+	background-image: none;
+	background-color: white;
+	margin: 0;
+}
+
+#task-subtasks .subtask-checkbox>i {
+	top: 7px;
+	color: black;
+}
+
+
+
+#task-subtask div.input-container {
+	margin: -21px 0 0 0 !important;
+}
+
+.remove-subtask {
+	position: absolute;
+	top: 2px;
+	right: 25px;
+}
+
+.remove-subtask i {
+	color: rgba(0,0,0,.3) !important;
+	transition: all .5s;
+}
+
+.remove-subtask i:hover {
+	color: rgba(0,0,0,.7) !important;
+}
+
+.done-true {
+	text-decoration: line-through;
+	opacity: .5;
+}
