@@ -3,8 +3,10 @@
   - Node.js (https://nodejs.org/)
   - Npm (https://www.npmjs.com/)
   - MongoDB (https://www.mongodb.org/)
+
 #### Configure MongoDB
 Change file /config/config.js. Write uri of your database in field "uri".
+
 #### Install required modules
 In root folder of application there is a file package.json. Install required modules using npm.
 ```sh
